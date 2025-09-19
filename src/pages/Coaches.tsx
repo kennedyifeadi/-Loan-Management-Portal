@@ -1,11 +1,11 @@
 import withLoanerLayout from "../layout/CoachesLayout"
 import withMainLayout from "../layout/MainLayout"
 
-const Loaner = () => {
+const Coaches = () => {
   return (
-    <div>Loaner</div>
+    <div>Coaches</div>
   )
 }
 
-export default withMainLayout(withLoanerLayout(Loaner))
+export default withMainLayout(withLoanerLayout(Coaches))
 
