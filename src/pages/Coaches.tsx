@@ -1,11 +1,20 @@
-import withLoanerLayout from "../layout/CoachesLayout"
-import withMainLayout from "../layout/MainLayout"
+
+
+
+import LoanerLayout from "../layout/CoachesLayout";
+import MainLayout from "../layout/MainLayout";
 
 const Loaner = () => {
-  return (
-    <div>Loaner</div>
-  )
-}
+  return <div>Loaner</div>;
+};
 
-export default withMainLayout(withLoanerLayout(Loaner))
+Loaner.getLayout = function getLayout(page: React.ReactNode) {
+  return (
+    <MainLayout>
+      <LoanerLayout>{page}</LoanerLayout>
+    </MainLayout>
+  );
+};
+
+export default Loaner;
 

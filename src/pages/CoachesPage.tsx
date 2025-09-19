@@ -1,9 +1,14 @@
-import withMainLayout from '../layout/MainLayout'
+
+
+
+import MainLayout from "../layout/MainLayout";
 
 const CoachesPage = () => {
-  return (
-    <div>CoachesPage</div>
-  )
-}
+  return <div>CoachesPage</div>;
+};
 
-export default withMainLayout(CoachesPage)
+CoachesPage.getLayout = function getLayout(page: React.ReactNode) {
+  return <MainLayout>{page}</MainLayout>;
+};
+
+export default CoachesPage;
