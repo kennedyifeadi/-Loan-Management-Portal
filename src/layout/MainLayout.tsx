@@ -1,6 +1,24 @@
+import { SideBar } from "../components/SideBar"
+import { TopNav } from "../components/TopNav"
 
-export const MainLayout = () => {
+const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div>MainLayout</div>
+    <div>
+      <SideBar />
+      <div className="flex">
+        <TopNav />
+        <main>{children}</main>
+      </div>
+    </div>
   )
 }
+
+const withMainLayout = (Component: React.ComponentType) => {
+  return (props: any) => (
+    <MainLayout>
+      <Component {...props} />
+    </MainLayout>
+  )
+}
+
+export default withMainLayout
