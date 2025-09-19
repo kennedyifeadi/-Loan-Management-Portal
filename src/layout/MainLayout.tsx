@@ -1,5 +1,5 @@
-import { SideBar } from "../components/SideBar"
-import { TopNav } from "../components/TopNav"
+import { TopNav } from "../components/TopNav";
+import { SideBar } from "../components/SideBar";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -10,15 +10,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
         <main>{children}</main>
       </div>
     </div>
-  )
-}
+  );
+};
 
-const withMainLayout = (Component: React.ComponentType) => {
-  return (props: any) => (
-    <MainLayout>
-      <Component {...props} />
-    </MainLayout>
-  )
-}
-
-export default withMainLayout
+export default MainLayout;

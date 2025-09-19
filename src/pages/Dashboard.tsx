@@ -1,10 +1,15 @@
-import withMainLayout from "../layout/MainLayout"
+
+
+
+import MainLayout from "../layout/MainLayout";
 
 const Dashboard = () => {
-  return (
-    <div>Dashboard</div>
-  )
-}
+  return <div>Dashboard</div>;
+};
 
-export default withMainLayout(Dashboard)
+Dashboard.getLayout = function getLayout(page: React.ReactNode) {
+  return <MainLayout>{page}</MainLayout>;
+};
+
+export default Dashboard;
 

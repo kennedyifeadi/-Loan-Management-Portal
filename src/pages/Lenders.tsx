@@ -1,10 +1,16 @@
-import withLendersLayout from "../layout/LendersLayout"
-import withMainLayout from "../layout/MainLayout"
+import LendersLayout from "../layout/LendersLayout";
+import MainLayout from "../layout/MainLayout";
 
 const Lenders = () => {
-  return (
-    <div>Lenders</div>
-  )
-}
+  return <div>Lenders</div>;
+};
 
-export default withMainLayout(withLendersLayout(Lenders))
+Lenders.getLayout = function getLayout(page: React.ReactNode) {
+  return (
+    <MainLayout>
+      <LendersLayout>{page}</LendersLayout>
+    </MainLayout>
+  );
+};
+
+export default Lenders;
