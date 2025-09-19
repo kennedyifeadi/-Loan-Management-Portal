@@ -1,5 +1,3 @@
-
-
 import MainLayout from "../layout/MainLayout";
 
 const LendersPage = () => {
