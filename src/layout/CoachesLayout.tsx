@@ -1,7 +1,7 @@
 import { TopNav } from "../components/coachesComp/TopNav"
 import { SideBar } from "../components/coachesComp/SideBar";
 
-const LoanerLayout = ({ children }: { children: React.ReactNode }) => {
+const CoachLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <div>
             <TopNav />
@@ -13,4 +13,4 @@ const LoanerLayout = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
-export default LoanerLayout;
+export default CoachLayout;

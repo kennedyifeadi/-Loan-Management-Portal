@@ -1,14 +1,16 @@
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Coaches from "./pages/Coaches";
 
 function App() {
-
   return (
-    <>
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <h1 className="text-4xl font-bold text-blue-600">Loan Management App</h1>
-      </div>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={Dashboard.getLayout(<Dashboard />)} />
+        <Route path="/coaches" element={Coaches.getLayout(<Coaches />)} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

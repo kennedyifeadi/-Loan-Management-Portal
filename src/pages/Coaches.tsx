@@ -1,20 +1,22 @@
 
 
 
-import LoanerLayout from "../layout/CoachesLayout";
+import CoachLayout from "../layout/CoachesLayout";
 import MainLayout from "../layout/MainLayout";
 
-const Loaner = () => {
+const Coach = () => {
   return <div>Loaner</div>;
 };
 
-Loaner.getLayout = function getLayout(page: React.ReactNode) {
+Coach.getLayout = function getLayout(page: React.ReactNode) {
   return (
     <MainLayout>
-      <LoanerLayout>{page}</LoanerLayout>
+      <CoachLayout>
+        {page}
+      </CoachLayout>
     </MainLayout>
   );
 };
 
-export default Loaner;
+export default Coach;
 
