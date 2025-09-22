@@ -3,11 +3,11 @@ import { SideBar } from "../components/SideBar";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex">
+    <div className="flex w-full">
       <SideBar />
-      <div className="flex relative">
+      <div className="flex relative w-full">
         <TopNav />
-        <main className="mt-10">{children}</main>
+        <main className="mt-[4%] w-full">{children}</main>
       </div>
     </div>
   );

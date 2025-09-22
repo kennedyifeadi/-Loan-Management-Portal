@@ -1,4 +1,5 @@
 import { ArrowDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useMemo } from "react";
 
@@ -6,6 +7,8 @@ const TopNav = () => {
   const [selectedStatus, setSelectedStatus] = useState("At Capacity");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(2);
+  const [showRate, setShowRate] = useState(false);
+  const [lenderRate, setLenderRate] = useState(false);
 
   const statusOptions = useMemo(
     () => [
@@ -37,6 +40,8 @@ const TopNav = () => {
     []
   );
 
+  const dropdownOptions = ["275 BPS", "200 BPS", "0 BPS", "Account"];
+
   const [activeColor, setActiveColor] = useState([
     statusOptions[activeIndex].col,
     statusOptions[activeIndex].col2,
@@ -47,6 +52,15 @@ const TopNav = () => {
     setActiveIndex(index);
     setIsDropdownOpen(false);
   };
+
+  const handleRateClick = (stat: boolean) => {
+    setShowRate(stat);
+  };
+
+  const handleLenderRate = (stat: boolean) => {
+    setLenderRate(stat);
+    
+  }
 
   useEffect(() => {
     setActiveColor([
@@ -59,11 +73,64 @@ const TopNav = () => {
     <header className="fixed top-0 left-0 w-full h-16 bg-white border-b border-gray-300 flex items-center justify-between  px-[2%] z-10 shadow-2xs">
       <ul className="flex items-center gap-2">
         <li>Welcome , Brian</li>
-        <li>
-          <button className="bg-[#1f9ef9] text-white px-5 items-center gap-2 py-[6px] rounded-[7px] border-1 border-[#1964a1] flex w-[170px]">
+        <li
+          onMouseOver={() => handleRateClick(true)}
+          onMouseLeave={() => handleRateClick(false)}
+          className="relative cursor-pointer"
+        >
+          <button
+            onMouseOver={() => handleRateClick(true)}
+            onMouseLeave={() => handleRateClick(false)}
+            className="cursor-pointer bg-linear-to-b from-[#1f9ef9] to-[#0688fa] hover:from-[#0688fa] hover:to-[#1f9ef9] text-white px-5 items-center gap-2 py-[6px] rounded-[7px] border-1 border-[#1964a1] flex min-w-[170px]"
+          >
             Rate Checker{" "}
             <ArrowDown className="text-white w-5 h-6 drop-shadow-lg" />
           </button>{" "}
+          <div
+            onMouseOver={() => handleRateClick(true)}
+            onMouseLeave={() => handleRateClick(false)}
+            className={`
+            absolute top-full left-0 mt-1 bg-white rounded-lg shadow-lg p-2 z-50 transform transition-all duration-300 min-w-[250px]
+            ${
+              !showRate
+                ? " opacity-0 translate-y-5 pointer-events-none"
+                : "  translate-y-0 opacity-100 pointer-events-auto"
+            }
+            `}
+          >
+            <div
+              className={`flex justify-between items-center px-3 py-2 rounded cursor-pointer text-sm transition-colors hover:text-blue-500`}
+            >
+              Polly Rate Checker
+            </div>
+            <div
+              onMouseOver={() => handleLenderRate(true)}
+              onMouseLeave={() => handleLenderRate(false)}
+              className={`flex justify-between items-center px-3 py-2 rounded cursor-pointer text-sm transition-colors hover:text-blue-500`}
+            >
+              Lender Price Rate Checker
+              <ArrowRight className="text-blue-500" />
+              <div
+                className={`
+            absolute top-[50%] right-[-65%] mt-1 bg-white rounded-lg shadow-lg p-2 min-w-40 z-50 transform transition-all duration-300
+            ${
+              !lenderRate
+                ? "opacity-0 translate-y-5 pointer-events-none"
+                : " translate-y-0 opacity-100 pointer-events-auto"
+            }
+            `}
+              >
+                {dropdownOptions.map((option, index) => (
+                  <div
+                    key={index}
+                    className={`flex items-center px-3 py-2 rounded cursor-pointer text-sm transition-colors hover:text-blue-500`}
+                  >
+                    {option}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </li>
       </ul>
 
@@ -91,8 +158,8 @@ const TopNav = () => {
             absolute top-full left-0 mt-1 bg-white rounded-lg shadow-lg p-2 min-w-40 z-50 transform transition-all duration-300
             ${
               !isDropdownOpen
-                ? "opacity-0 translate-y-5"
-                : " translate-y-0 opacity-100"
+                ? "opacity-0 translate-y-5 pointer-events-none"
+                : " translate-y-0 opacity-100 pointer-events-auto"
             }
             `}
           >
@@ -118,9 +185,8 @@ const TopNav = () => {
             {selectedStatus}
           </div>
         </div>
-
         {/* Post scenario button */}
-        <button className="bg-[#1f9ef9] text-white px-5 items-center gap-2 py-[6px] rounded-[7px] border-1 border-[#1964a1] flex w-[170px]">
+        <button className="bg-[#1f9ef9] text-white px-5 items-center gap-2 py-[6px] rounded-[7px] border-1 border-[#1964a1] flex min-w-[170px]">
           Post A Scenario{" "}
           <ArrowDown className="text-white w-5 h-6 drop-shadow-lg" />
         </button>{" "}

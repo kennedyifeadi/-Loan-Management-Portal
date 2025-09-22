@@ -1,10 +1,15 @@
-
-
-
 import MainLayout from "../layout/MainLayout";
+import ProcessorCard from "../components/processorComp/ProcessorCard";
+import SearchFilter from "../components/SearchFilter";
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <div className="w-full">
+      <SearchFilter />
+      <ProcessorCard />
+      
+    </div>
+  );
 };
 
 Dashboard.getLayout = function getLayout(page: React.ReactNode) {
@@ -12,4 +17,3 @@ Dashboard.getLayout = function getLayout(page: React.ReactNode) {
 };
 
 export default Dashboard;
-
